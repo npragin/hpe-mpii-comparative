@@ -1,8 +1,8 @@
 # Comparing Methods for Multi-Person Human Pose Estimation
 
-<p style="text-align:center">
+<div align="center">
   <img src="assets/end_end.jpg" alt="End-to-end visualization">
-</p>
+</div>
 
 ## Project Overview
 
