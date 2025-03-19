@@ -8,14 +8,16 @@ This repository contains the implementation of three different approaches for mu
 
 1. **Custom Top-Down Architecture** - Using Swin Transformer [[1]](https://arxiv.org/pdf/2103.14030) backbones and YOLOv8 for person detection
     - Implemented by [@npragin](github.com/npragin) in `top_down/`
-2. **Bottom-Up Approach** - Inspired by OpenPose with Part Affinity Fields [[2]](https://arxiv.org/pdf/1812.08008)
+2. **Bottom-Up Architecture** - Inspired by OpenPose with Part Affinity Fields [[2]](https://arxiv.org/pdf/1812.08008)
     - Implemented by [@AandBstudent](github.com/AandBstudent) in `bottom_up/`
-3. **End-to-End Detection Transformer** - Based on PETR (Pose Estimation with TRansformers) [[3]](https://openaccess.thecvf.com/content/CVPR2022/papers/Shi_End-to-End_Multi-Person_Pose_Estimation_With_Transformers_CVPR_2022_paper.pdf)
+3. **End-to-End Transformer-based Architecture** - Based on PETR (Pose Estimation with TRansformers) [[3]](https://openaccess.thecvf.com/content/CVPR2022/papers/Shi_End-to-End_Multi-Person_Pose_Estimation_With_Transformers_CVPR_2022_paper.pdf)
     - Adapted for MPII by [@BryanZChen](github.com/BryanZChen) in `e2e/`
 
 ## Approaches
 
 ### 1. Custom Top-Down Approach
+- **Background**:
+  - Top-down approaches detect individual people in the image and feed each person into a single-person pose estimator
 - **Architecture**:
   - Two-stage pipeline using YOLO-v8 for person detection
   - Swin Transformer backbone (Swin-S for 50M model, Swin-B for 100M model)
@@ -24,6 +26,8 @@ This repository contains the implementation of three different approaches for mu
   - Loss function combining binary cross-entropy and smooth L1 loss
 
 ### 2. Bottom-Up Approach
+- **Background**:
+  - Bottom-up approaches identify all keypoints present in the full image, then group them into individual people
 - **Architecture**:
   - ResNet-50 backbone followed by iterative refinement stages
   - Predicts heatmaps for joint locations and Part Affinity Fields (PAFs) for limb connections
@@ -32,6 +36,8 @@ This repository contains the implementation of three different approaches for mu
   - Optimizes using MSE loss between predicted and ground-truth heatmaps/PAFs
 
 ### 3. End-to-End Approach (PETR)
+- **Background**:
+  - End-to-end approaches directly process the input image in a single unified network without explicitly separating the person detection and keypoint localization steps
 - **Architecture**:
   - Based on Pose Estimation with TRansformers (PETR)
   - Uses ResNet-50 or Swin-B backbone
@@ -43,7 +49,7 @@ This repository contains the implementation of three different approaches for mu
 
 ### Object Keypoint Similarity (OKS)
 
-Object Keypoint Similarity (OKS) is the primary metric used to evaluate human pose estimation performance. OKS is analogous to IoU (Intersection over Union) in object detection but specifically designed for keypoint-based tasks.
+Object Keypoint Similarity (OKS) is the primary metric for evaluating human pose estimation performance. OKS is analogous to IoU (Intersection over Union) in object detection but designed explicitly for keypoint-based tasks.
 
 The OKS between a predicted pose and a ground truth pose is calculated as:
 
@@ -93,11 +99,11 @@ The end-to-end detection model (PETR) significantly outperformed both top-down a
     - Bottom-up: +36.7% OKS improvement, but from a lower baseline
 3. **Multi-scale feature maps and positionally invariant decoders** are critical for accurate pose estimation
     - Their absence likely contributes to our custom top-down model's lower performance.
-4. **Top-down approaches** offer good accuracy but computation at inference scales linearly with the number of people in the image
+4. **Top-down approaches** offer good accuracy, but computation at inference scales linearly with the number of people in the image
 5. **Bottom-up approaches** suffer in accuracy but maintain computational efficiency regardless of person count
 6. **Practical deployment considerations**
     - For high-accuracy requirements (medical, sports analytics): End-to-end models are recommended
-    - For real-time applications with moderate accuracy needs in high density environments: Bottom-up models provide the highest throughput
+    - For real-time applications with moderate accuracy needs in high-density environments: Bottom-up models provide the highest throughput
     - For balanced performance: End-to-end models with the 50M parameter configuration offer the best tradeoff
 
 ## Future Work
@@ -106,7 +112,7 @@ The end-to-end detection model (PETR) significantly outperformed both top-down a
 - Implement rotation and translation data augmentation for emphasis on rotational and positional invariance and equivariance
 
 ### Top-Down Approach Improvements
-- Implement multi-scale feature pyramid networks to better handle various human scales in images
+- Implement multi-scale feature pyramid networks to better handle various human scales
 - Develop positionally and rotationally invariant/equivariant decoders to improve generalization
 
 ### Bottom-Up Approach Improvements
