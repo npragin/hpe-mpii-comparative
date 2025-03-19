@@ -1,5 +1,9 @@
 # Comparing Methods for Multi-Person Human Pose Estimation
 
+<p style="text-align:center">
+  <img src="assets/end_end.jpg" alt="End-to-end visualization">
+</p>
+
 ## Project Overview
 
 Human pose estimation is a fundamental computer vision task with applications in sports analytics, robotics, and augmented reality. This project compares three distinct methodologies, analyzing the tradeoffs between accuracy and computational efficiency. **Find the full report with visualizations [here](assets/report.pdf)**.
