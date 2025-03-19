@@ -1,0 +1,6 @@
+[submodule "e2e/third_party/mmcv"]
+	path = e2e/third_party/mmcv
+	url = git@github.com:open-mmlab/mmcv.git
+[submodule "e2e/third_party/mmdetection"]
+	path = e2e/third_party/mmdetection
+	url = git@github.com:open-mmlab/mmdetection.git
