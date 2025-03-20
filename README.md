@@ -12,8 +12,10 @@ This repository contains the implementation of three different approaches for mu
 
 1. **Custom Top-Down Architecture** - Using Swin Transformer [[1]](https://arxiv.org/pdf/2103.14030) backbones and YOLOv8 for person detection
     - Implemented by [@npragin](github.com/npragin) in `top_down/`
+
 2. **Bottom-Up Architecture** - Inspired by OpenPose with Part Affinity Fields [[2]](https://arxiv.org/pdf/1812.08008)
     - Implemented by [@AandBstudent](github.com/AandBstudent) in `bottom_up/`
+
 3. **End-to-End Transformer-based Architecture** - Based on PETR (Pose Estimation with TRansformers) [[3]](https://openaccess.thecvf.com/content/CVPR2022/papers/Shi_End-to-End_Multi-Person_Pose_Estimation_With_Transformers_CVPR_2022_paper.pdf)
     - Adapted for MPII by [@BryanZChen](github.com/BryanZChen) in `e2e/`
 
@@ -97,14 +99,19 @@ The end-to-end detection model (PETR) significantly outperformed both top-down a
 ## Key Findings
 
 1. **End-to-end models perform best** for multi-person pose estimation tasks
+
 2. **Parameter scaling effects vary** across architectures
     - Top-down: +7.4% OKS improvement
     - End-to-end: Minimal impact (+0.1% OKS)
     - Bottom-up: +36.7% OKS improvement, but from a lower baseline
+
 3. **Multi-scale feature maps and positionally invariant decoders** are critical for accurate pose estimation
     - Their absence likely contributes to our custom top-down model's lower performance.
+
 4. **Top-down approaches** offer good accuracy, but computation at inference scales linearly with the number of people in the image
+
 5. **Bottom-up approaches** suffer in accuracy but maintain computational efficiency regardless of person count
+
 6. **Practical deployment considerations**
     - For high-accuracy requirements (medical, sports analytics): End-to-end models are recommended
     - For real-time applications with moderate accuracy needs in high-density environments: Bottom-up models provide the highest throughput
