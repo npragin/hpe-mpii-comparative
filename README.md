@@ -2,11 +2,14 @@
 
 <div align="center">
   <img src="assets/end_end.jpg" alt="End-to-end visualization">
+  <p><em>Visualization of end-to-end method's keypoint predictions</em></p>
 </div>
 
 ## Project Overview
 
-Human pose estimation is a fundamental computer vision task with applications in sports analytics, robotics, and augmented reality. This project compares three distinct methodologies, analyzing the tradeoffs between accuracy and computational efficiency. **Find the full report with visualizations [here](assets/report.pdf)**.
+**Find the full report with visualizations [here](assets/report.pdf)**.
+
+Human pose estimation is a fundamental computer vision task with applications in sports analytics, robotics, and augmented reality. This project compares three distinct methodologies, analyzing the tradeoffs between accuracy and computational efficiency.
 
 This repository contains the implementation of three different approaches for multi-person 2D pose estimation:
 
